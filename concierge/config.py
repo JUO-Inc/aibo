@@ -14,7 +14,7 @@ def get_config():
         config = {
             "api_key": "YOUR KEY",
             "transcription_api_url": "https://api.openai.com/v1/audio/transcriptions",
-            "transcription_model": "whisper-1",
+            "transcription_model": "whisper-1:medium",
             "chat_api_url": "https://api.openai.com/v1/chat/completions",
             "chat_model": "gpt-3.5-turbo"
         }

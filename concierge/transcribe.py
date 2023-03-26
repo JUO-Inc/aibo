@@ -9,7 +9,10 @@ from .config import get_config
 
 def run_whisper(path, language="en"):
     print("Transcribing...")
-    model = whisper.load_model("medium")
+    config = get_config()
+    MODEL = config["transcription_model"]
+    MODEL, MODEL_SIZE = MODEL.split(":")
+    model = whisper.load_model(MODEL_SIZE)
     result = model.transcribe(path, language=language)
     print("Done.")
     print(result)
@@ -26,6 +29,7 @@ def call_whisper(path):
     API_KEY = config["api_key"]
     URL = config["transcription_api_url"]
     MODEL = config["transcription_model"]
+    MODEL, MODEL_SIZE = MODEL.split(":")
 
     headers = {"Authorization": "Bearer " + API_KEY}
 
