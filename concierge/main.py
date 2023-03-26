@@ -5,7 +5,7 @@ import time
 
 import whisper
 
-from .config import CONFIG_PATH, get_config, ask_and_set_config
+from .config import get_config, ask_and_set_config
 from .record import record_audio
 from .transcribe import run_whisper, call_whisper
 from .chat import call_chatgpt, run_chatgpt
@@ -39,10 +39,7 @@ def main():
 @click.command()
 def init():
     config = get_config()
-    config = ask_and_set_config(config)
-
-    with open(CONFIG_PATH, "w") as f:
-        json.dump(config, f, indent=4)
+    ask_and_set_config(config)
 
 
 if __name__ == "__main__":

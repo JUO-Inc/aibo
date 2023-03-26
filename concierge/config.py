@@ -34,7 +34,9 @@ def ask_and_set_config(config):
     config["transcription_model"] = transcription_model
     config["chat_api_url"] = chat_api_url
     config["chat_model"] = chat_model
-    return config
+
+    with open(CONFIG_PATH, "w") as f:
+        json.dump(config, f, indent=4)
 
 
 def ask_api_key(default):
