@@ -16,7 +16,7 @@ click.disable_unicode_literals_warning = True
 
 class Concierge():
     def __init__(self) -> None:
-        _ = whisper.load_model("medium")
+        pass
 
     def ask(self):
         start = time.time()
@@ -40,6 +40,10 @@ def main():
 def init():
     config = get_config()
     ask_and_set_config(config)
+
+    MODEL = config["transcription_model"]
+    MODEL, MODEL_SIZE = MODEL.split(":")
+    _ = whisper.load_model(MODEL_SIZE)
 
 
 if __name__ == "__main__":
