@@ -9,7 +9,7 @@ import pyaudio
 
 def record_audio():
     now = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-    os.makedirs(f"history/{now}")
+    os.makedirs(os.path.join("history", now))
     CHUNK = 2**10
     FORMAT = pyaudio.paInt16
     CHANNELS = 1
