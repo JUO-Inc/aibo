@@ -2,18 +2,14 @@ import os
 import requests
 
 
-from .config import get_config
-
-
-def run_chatgpt(text, output_path):
+def run_chatgpt(text, output_path, config):
     # <TODO> run GPT offline
 
     add_result(output_path, text)
     return text
 
 
-def call_chatgpt(text, output_path):
-    config = get_config()
+def call_chatgpt(text, output_path, config):
     API_KEY = config["api_key"]
     URL = config["chat_api_url"]
     MODEL = config["chat_model"]

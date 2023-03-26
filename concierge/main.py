@@ -16,16 +16,16 @@ click.disable_unicode_literals_warning = True
 
 class Concierge():
     def __init__(self) -> None:
-        pass
+        self.config = get_config()
 
     def ask(self):
         start = time.time()
         call_speaker("How can I help you?")
         output_path = record_audio()
         mid1 = time.time()
-        text, output_path = call_whisper(output_path)
+        text, output_path = call_whisper(output_path, self.config)
         mid2 = time.time()
-        text = call_chatgpt(text, output_path)
+        text = call_chatgpt(text, output_path, self.config)
         call_speaker(text)
         end = time.time()
         print(mid1 - start, mid2 - start, end - start)
