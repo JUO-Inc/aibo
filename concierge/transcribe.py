@@ -4,7 +4,7 @@ import requests
 
 import whisper
 
-from .config import API_KEY
+from .config import get_config
 
 
 def run_whisper(path, language="en"):
@@ -22,11 +22,15 @@ def run_whisper(path, language="en"):
 
 
 def call_whisper(path):
-    URL = "https://api.openai.com/v1/audio/transcriptions"
+    config = get_config()
+    API_KEY = config["api_key"]
+    URL = config["transcription_api_url"]
+    MODEL = config["transcription_model"]
+
     headers = {"Authorization": "Bearer " + API_KEY}
 
     file = {
-        "model": (None, "whisper-1"),
+        "model": (None, MODEL),
         "file": open(path, "rb"),
     }
 

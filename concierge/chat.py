@@ -1,8 +1,8 @@
 import os
 import requests
-import json
 
-from .config import API_KEY
+
+from .config import get_config
 
 
 def run_chatgpt(text, output_path):
@@ -12,14 +12,18 @@ def run_chatgpt(text, output_path):
     return text
 
 
-def call_chatgpt(text, output_path, model="gpt-3.5-turbo"):
+def call_chatgpt(text, output_path):
+    config = get_config()
+    API_KEY = config["api_key"]
+    URL = config["chat_api_url"]
+    MODEL = config["chat_model"]
     headers = {
         "Content-Type": "application/json",
         "Authorization": "Bearer " + API_KEY,
     }
 
     json_data = {
-        "model": model,
+        "model": MODEL,
         "messages": [
             {
                 "role": "user",
@@ -29,7 +33,7 @@ def call_chatgpt(text, output_path, model="gpt-3.5-turbo"):
     }
 
     response = requests.post(
-        "https://api.openai.com/v1/chat/completions",
+        URL,
         headers=headers,
         json=json_data)
 
