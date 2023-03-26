@@ -2,7 +2,16 @@ import os
 import requests
 
 
-def run_chatgpt(text, output_path, config):
+def run_chatgpt(path, output_path, config):
+    if config["offline"]:
+        result = run_local_chatgpt(path, output_path, config)
+    else:
+        result = call_chatgpt(path, output_path, config)
+
+    return result
+
+
+def run_local_chatgpt(text, output_path, config):
     # <TODO> run GPT offline
 
     add_result(output_path, text)

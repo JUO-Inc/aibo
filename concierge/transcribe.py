@@ -5,7 +5,16 @@ import requests
 import whisper
 
 
-def run_whisper(path, config, language="en"):
+def run_whisper(path, config):
+    if config["offline"]:
+        text, output_path = run_local_whisper(path, config)
+    else:
+        text, output_path = call_whisper(path, config)
+
+    return text, output_path
+
+
+def run_local_whisper(path, config, language="en"):
     print("Transcribing...")
     MODEL = config["transcription_model"]
     MODEL, MODEL_SIZE = MODEL.split(":")

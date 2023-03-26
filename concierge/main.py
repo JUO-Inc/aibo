@@ -2,13 +2,14 @@ import json
 import click
 import os
 import time
+import sys
 
 import whisper
 
 from .config import get_config, ask_and_set_config
 from .record import record_audio
-from .transcribe import run_whisper, call_whisper
-from .chat import call_chatgpt, run_chatgpt
+from .transcribe import run_whisper
+from .chat import run_chatgpt
 from .text_to_speech import call_speaker
 
 click.disable_unicode_literals_warning = True
@@ -17,15 +18,16 @@ click.disable_unicode_literals_warning = True
 class Concierge():
     def __init__(self) -> None:
         self.config = get_config()
+        self.config["offline"] = "offline" == sys.argv[1]
 
     def ask(self):
         start = time.time()
         call_speaker("How can I help you?")
         output_path = record_audio()
         mid1 = time.time()
-        text, output_path = call_whisper(output_path, self.config)
+        text, output_path = run_whisper(output_path, self.config)
         mid2 = time.time()
-        text = call_chatgpt(text, output_path, self.config)
+        text = run_chatgpt(text, output_path, self.config)
         call_speaker(text)
         end = time.time()
         print(mid1 - start, mid2 - start, end - start)
