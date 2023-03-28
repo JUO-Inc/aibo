@@ -1,9 +1,7 @@
-import json
-import click
-import os
 import time
-import sys
+import argparse
 
+import click
 import whisper
 
 from .config import get_config, ask_and_set_config
@@ -16,32 +14,68 @@ click.disable_unicode_literals_warning = True
 
 
 class Concierge():
-    def __init__(self) -> None:
+    def __init__(self, args) -> None:
         self.config = get_config()
-        self.config["offline"] = "offline" == sys.argv[1]
+        self.config["offline"] = args.offline
 
     def ask(self):
         start = time.time()
         call_speaker("How can I help you?")
         output_path = record_audio()
-        mid1 = time.time()
+
         text, output_path = run_whisper(output_path, self.config)
-        mid2 = time.time()
+
         text = run_chatgpt(text, output_path, self.config)
+
         call_speaker(text)
+
         end = time.time()
-        print(mid1 - start, mid2 - start, end - start)
+        print(end - start, "sec.")
 
 
 def main():
-    my_concierge = Concierge()
+    parser = argparse.ArgumentParser(description=None)
+
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        action="count",
+        dest="verbosity",
+        default=0,
+        help="Set verbosity.",
+    )
+
+    def help(args):
+        parser.print_help()
+
+    parser.set_defaults(func=help)
+
+    subparsers = parser.add_subparsers()
+    sub = subparsers.add_parser("init", help="initialize concierge")
+    sub.set_defaults(func=cli_init)
+
+    sub = subparsers.add_parser("start", help="start concierge")
+    sub.add_argument('-O', '--offline', action='store_true', help='run offline')
+    sub.set_defaults(func=cli_start)
+
+    args = parser.parse_args()
+    args.func(args)
+
+
+def cli_init(args):
+    init()
+
+
+def cli_start(args):
+    my_concierge = Concierge(args)
     my_concierge.ask()
 
 
 @click.command()
-def init():
+@click.argument("arg1")
+def init(arg1):
     config = get_config()
-    ask_and_set_config(config)
+    config = ask_and_set_config(config)
 
     MODEL = config["transcription_model"]
     MODEL, MODEL_SIZE = MODEL.split(":")
@@ -51,4 +85,3 @@ def init():
 if __name__ == "__main__":
     my_concierge = Concierge()
     my_concierge.ask()
-    # record_audio()
