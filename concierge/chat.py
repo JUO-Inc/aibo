@@ -12,10 +12,10 @@ def run_chatgpt(path, output_path, config):
 
 
 def run_local_chatgpt(text, output_path, config):
-    # <TODO> run GPT offline
-
-    add_result(output_path, text)
-    return text
+    # <TODO> run ChatGPT offline
+    print("ChatGPT running offline is not yet implemented. So, We use ChatGPT API for now.")
+    result = call_chatgpt(text, output_path, config)
+    return result
 
 
 def call_chatgpt(text, output_path, config):
