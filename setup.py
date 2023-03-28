@@ -4,11 +4,15 @@ if __name__ == "__main__":
     setup(
         name='concierge',
         version='0.0.1',
-        packages=find_packages("concierge"),
+        description="Concierge: AI concierge that can run offline",
+        long_description=open("README.md", "r", encoding="utf-8").read(),
+        long_description_content_type="text/markdown",
+        author="Concierge Community",
+        author_email="koki.noda.contact@gmail.com",
+        packages=find_packages(exclude=["tests*"]),
         entry_points={
             'console_scripts': [
-                'concierge init = concierge.main:init',
-                'concierge start = concierge.main:main'
+                'concierge=concierge.main:main'
             ],
         },
         python_requires=">=3.8.0",
@@ -18,4 +22,7 @@ if __name__ == "__main__":
             "pyaudio",
             "openai-whisper"
         ],
+        url="https://github.com/JUO-Inc/concierge",
+        keywords="LLM language model NLP speech deep learning transformer pytorch tensorflow GPT",
+        license="MIT",
     )
