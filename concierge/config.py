@@ -37,6 +37,7 @@ def ask_and_set_config(config):
 
     with open(CONFIG_PATH, "w") as f:
         json.dump(config, f, indent=4)
+    return config
 
 
 def ask_api_key(default):
