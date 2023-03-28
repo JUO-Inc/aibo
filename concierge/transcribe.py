@@ -26,7 +26,9 @@ def run_local_whisper(path, config, language="en"):
         text = result["text"]
     else:
         text = "No Result"
-    output_path = write_result(path, text)
+    output_path = get_output_path(path, text)
+    with open(output_path, "w") as f:
+        f.write(text)
     return text, output_path
 
 
@@ -55,18 +57,18 @@ def call_whisper(path, config):
         text = result["text"]
     else:
         text = "No Result"
-    output_path = write_result(path, text)
+    output_path = get_output_path(path, text)
+    with open(output_path, "w") as f:
+        f.write(text)
     return text, output_path
 
 
-def write_result(path, text):
+def get_output_path(path: str, text: str) -> str:
     oldpath = os.path.dirname(path)
     newpath = oldpath + "-" + text[:20]
     os.makedirs(newpath)
     os.rename(oldpath, newpath)
     output_path = os.path.join(newpath, "output.txt")
-    with open(output_path, "w") as f:
-        f.write(text)
     return output_path
 
 
