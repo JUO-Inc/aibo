@@ -21,11 +21,12 @@ def run_local_whisper(path, config, language="en"):
     model = whisper.load_model(MODEL_SIZE)
     result = model.transcribe(path, language=language)
     print("Done.")
-    print(result)
+    # print(result)
     if result["text"]:
         text = result["text"]
     else:
         text = "No Result"
+    print(text)
     output_path = get_output_path(path, text)
     with open(output_path, "w") as f:
         f.write(text)
@@ -52,11 +53,12 @@ def call_whisper(path, config):
     )
 
     result = response.json()
-    print(result)
+    # print(result)
     if result["text"]:
         text = result["text"]
     else:
         text = "No Result"
+    print(text)
     output_path = get_output_path(path, text)
     with open(output_path, "w") as f:
         f.write(text)

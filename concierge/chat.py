@@ -1,5 +1,6 @@
 import os
 import requests
+import warnings
 
 
 def run_chatgpt(path, output_path, config):
@@ -13,7 +14,7 @@ def run_chatgpt(path, output_path, config):
 
 def run_local_chatgpt(text, output_path, config):
     # <TODO> run ChatGPT offline
-    print("ChatGPT running offline is not yet implemented. So, We use ChatGPT API for now.")
+    warnings.warn("ChatGPT running offline is not yet implemented. So, We use ChatGPT API for now.")
     result = call_chatgpt(text, output_path, config)
     return result
 
@@ -43,8 +44,9 @@ def call_chatgpt(text, output_path, config):
         json=json_data)
 
     result = response.json()
-    print(result)
+    # print(result)
     result = result["choices"][0]["message"]["content"]
+    print(result)
     add_result(output_path, result)
     return result
 
