@@ -1,4 +1,4 @@
-# Contribute to Concierge
+# Contribute to Aibo
 
 Everyone is welcome to contribute, and we value everybody's contribution. Code contributions are not the only way to help the community. Answering questions, helping others, and improving the documentation are also immensely valuable.
 
@@ -10,7 +10,7 @@ To contribute to this project, please follow a ["fork and pull request"](https:/
 
 ### GitHub Issues
 
-Our [issues](https://github.com/JUO-Inc/concierge/issues) page is kept up to date
+Our [issues](https://github.com/JUO-Inc/aibo/issues) page is kept up to date
 with bugs, improvements, and feature requests.
 
 If you start working on an issue, please assign it to yourself.
@@ -36,10 +36,10 @@ good code into the codebase.
 
 ### Release process
 
-As of now, Concierge has an ad hoc release process: releases are cut with high frequency via by
-a developer and published to [PyPI](https://pypi.org/project/concierge/).
+As of now, Aibo has an ad hoc release process: releases are cut with high frequency via by
+a developer and published to [PyPI](https://pypi.org/project/aibo/).
 
-Concierge follows the [semver](https://semver.org/) versioning standard. However, as pre-1.0 software,
+Aibo follows the [semver](https://semver.org/) versioning standard. However, as pre-1.0 software,
 even patch releases may contain [non-backwards-compatible changes](https://semver.org/#spec-item-4).
 
 ## ✅Common Tasks

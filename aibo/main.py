@@ -13,7 +13,7 @@ from .text_to_speech import call_speaker
 click.disable_unicode_literals_warning = True
 
 
-class Concierge():
+class Aibo():
     def __init__(self, args) -> None:
         self.config = get_config()
         self.config["offline"] = args.offline
@@ -51,10 +51,10 @@ def main():
     parser.set_defaults(func=help)
 
     subparsers = parser.add_subparsers()
-    sub = subparsers.add_parser("init", help="initialize concierge")
+    sub = subparsers.add_parser("init", help="initialize aibo")
     sub.set_defaults(func=cli_init)
 
-    sub = subparsers.add_parser("start", help="start concierge")
+    sub = subparsers.add_parser("start", help="start aibo")
     sub.add_argument('-O', '--offline', action='store_true', help='run offline')
     sub.set_defaults(func=cli_start)
 
@@ -67,8 +67,8 @@ def cli_init(args):
 
 
 def cli_start(args):
-    my_concierge = Concierge(args)
-    my_concierge.ask()
+    my_aibo = Aibo(args)
+    my_aibo.ask()
 
 
 @click.command()
@@ -83,5 +83,5 @@ def init(arg1):
 
 
 if __name__ == "__main__":
-    my_concierge = Concierge()
-    my_concierge.ask()
+    my_aibo = Aibo()
+    my_aibo.ask()
