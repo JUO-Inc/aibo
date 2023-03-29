@@ -12,12 +12,14 @@ The project aims to create an AI concierge that can run offline.
 
 ## With pip
 
+This repository is tested on Python 3.8+ and PyTorch 1.13.1+.
+
 You should install Concierge in a [virtual environment](https://docs.python.org/3/library/venv.html). If you're unfamiliar with Python virtual environments, check out the [user guide](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/).
 
 First, create a virtual environment with the version of Python you're going to use and activate it.
 
 Then, you will need to install PyTorch.
-Please refer to [PyTorch installation page](https://pytorch.org/get-started/locally/#start-locally) and/or [Flax](https://github.com/google/flax#quick-install) regarding the specific installation command for your platform.
+Please refer to [PyTorch installation page](https://pytorch.org/get-started/locally/#start-locally) regarding the specific installation command for your platform.
 
 When one of those backends has been installed, Concierge can be installed using pip as follows:
 
