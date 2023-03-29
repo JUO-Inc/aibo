@@ -42,3 +42,6 @@ Offline execution is performed by appending "--offline" after this command.
 ```bash
 concierge start
 ```
+
+We support the following APIs for online execution;
+ChatGPT API for chatting and Whisper API for transcription.
