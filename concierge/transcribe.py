@@ -67,11 +67,17 @@ def call_whisper(path, config):
 
 def get_output_path(path: str, text: str) -> str:
     oldpath = os.path.dirname(path)
-    newpath = oldpath + "-" + text[:20]
+    title = get_title(text)
+    newpath = oldpath + "-" + title
     os.makedirs(newpath)
     os.rename(oldpath, newpath)
     output_path = os.path.join(newpath, "output.txt")
     return output_path
+
+
+def get_title(text: str) -> str:
+    title = text[:20]
+    return title
 
 
 if __name__ == "__main__":
