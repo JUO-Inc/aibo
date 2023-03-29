@@ -53,7 +53,7 @@ def call_chatgpt(text, output_path, config):
 
 def add_result(output_path, result):
     dirname = os.path.dirname(output_path)
-    text_path = os.path.join(dirname, "output.txt")
+    text_path = os.path.join(dirname, "output.md")
     with open(text_path, mode='a') as f:
         f.write("\n\n" + result)
 

@@ -71,7 +71,7 @@ def get_output_path(path: str, text: str) -> str:
     newpath = oldpath + "-" + title
     os.makedirs(newpath)
     os.rename(oldpath, newpath)
-    output_path = os.path.join(newpath, "output.txt")
+    output_path = os.path.join(newpath, "output.md")
     return output_path
 
 
