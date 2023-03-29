@@ -35,7 +35,7 @@ First, configure the model you want to use, API, and API key. You can also set t
 concierge init
 ```
 
-Start concierge and start conversation. Your conversation history is stored in the history directory.
+Start concierge and start conversation in Englich. Your conversation history is stored in the history directory.
 
 Offline execution is performed by appending "--offline" after this command.
 
