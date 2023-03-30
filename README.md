@@ -2,6 +2,8 @@
 
 The project aims to create an AI partner that can run offline.
 
+https://user-images.githubusercontent.com/62988216/228871916-f8311a31-be59-4855-b7d9-873e3f9adc10.mov
+
 # Features
 
 - You can choose your favorite AI model as your aibo.
