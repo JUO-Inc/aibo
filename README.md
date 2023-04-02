@@ -1,6 +1,9 @@
-# Aibo
-
-The project aims to create an AI partner that can run offline.
+<h1 align="center">
+   🔈Aibo
+</h1>
+<h3 align="center">
+    <p>Offline Smart Speaker Engine Powered by ChatGPT</p>
+</h3>
 
 https://user-images.githubusercontent.com/62988216/228871916-f8311a31-be59-4855-b7d9-873e3f9adc10.mov
 
@@ -45,5 +48,11 @@ Offline execution is performed by appending "--offline" after this command.
 aibo start
 ```
 
-We support the following APIs for online execution;
-ChatGPT API for chatting and Whisper API for transcription.
+# Models
+
+We support the following APIs for online/offline execution.
+
+| model   | online | offline |
+| :------ | :----: | :-----: |
+| ChatGPT |  ⭕️   |   ❌    |
+| Whisper |  ⭕️   |   ⭕️   |
