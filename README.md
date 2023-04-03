@@ -17,7 +17,7 @@ https://user-images.githubusercontent.com/62988216/228871916-f8311a31-be59-4855-
 
 ## With pip
 
-This repository is tested on Python 3.8+ and PyTorch 1.13.1+.
+This repository is tested on Python 3.8+, PyTorch 1.13.1+ and MacOS 11.5.2+.
 
 You should install aibo in a [virtual environment](https://docs.python.org/3/library/venv.html). If you're unfamiliar with Python virtual environments, check out the [user guide](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/).
 
@@ -40,7 +40,7 @@ First, configure the model you want to use, API, and API key. You can also set t
 aibo init
 ```
 
-Start aibo and start conversation in Englich. Your conversation history is stored in the history directory.
+Start aibo and start conversation in English. Your conversation history is stored in the history directory.
 
 Offline execution is performed by appending "--offline" after this command.
 
@@ -52,7 +52,7 @@ aibo start
 
 We support the following APIs for online/offline execution.
 
-| model   | online | offline |
-| :------ | :----: | :-----: |
-| ChatGPT |  ⭕️   |   ❌    |
-| Whisper |  ⭕️   |   ⭕️   |
+| model                  | online | offline |
+| :--------------------- | :----: | :-----: |
+| ChatGPT(gpt-3.5-turbo) |  ⭕️   |   ❌    |
+| Whisper                |  ⭕️   |   ⭕️   |
