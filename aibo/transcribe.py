@@ -65,7 +65,9 @@ def call_whisper(path, config):
     return text, output_path
 
 
-def get_output_path(path: str, text: str) -> str:
+def get_output_path(path: str, text: str, remove_audio=True) -> str:
+    if remove_audio:
+        os.remove(path)
     oldpath = os.path.dirname(path)
     title = get_title(text)
     newpath = oldpath + "-" + title
