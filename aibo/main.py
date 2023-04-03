@@ -16,18 +16,21 @@ click.disable_unicode_literals_warning = True
 class Aibo():
     def __init__(self, args) -> None:
         self.config = get_config()
-        self.config["offline"] = args.offline
+        args = vars(args)
+        self.config = {**self.config, **args}
 
     def ask(self):
         start = time.time()
-        call_speaker("How can I help you?")
+        if not self.config["silent"]:
+            call_speaker("How can I help you?")
         output_path = record_audio()
 
         text, output_path = run_whisper(output_path, self.config)
 
         text = run_chatgpt(text, output_path, self.config)
 
-        call_speaker(text)
+        if not self.config["silent"]:
+            call_speaker(text)
 
         end = time.time()
         print(end - start, "sec.")
@@ -56,6 +59,7 @@ def main():
 
     sub = subparsers.add_parser("start", help="start aibo")
     sub.add_argument('-O', '--offline', action='store_true', help='run offline')
+    sub.add_argument('-S', '--silent', action='store_true', help='run without speaker')
     sub.set_defaults(func=cli_start)
 
     args = parser.parse_args()
