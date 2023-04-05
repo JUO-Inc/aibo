@@ -9,9 +9,9 @@ https://user-images.githubusercontent.com/62988216/228871916-f8311a31-be59-4855-
 
 # Features
 
-- You can choose your favorite AI model as your aibo.
-- You don't need to worry about security and privacy.
-- You and Aibo can communicate by voice.
+- Voice Prompting: You and Aibo can communicate by voice.
+- Security and Privacy: You don't need to worry about security and privacy.
+- Models: You can choose your favorite AI model as your aibo.
 
 # Installation
 
