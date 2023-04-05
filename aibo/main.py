@@ -22,7 +22,7 @@ class Aibo():
     def ask(self):
         start = time.time()
         if not self.config["silent"]:
-            call_speaker("How can I help you?")
+            call_speaker("How can I help you?", self.config)
         output_path = record_audio()
 
         text, output_path = run_whisper(output_path, self.config)
@@ -30,7 +30,7 @@ class Aibo():
         text = run_chatgpt(text, output_path, self.config)
 
         if not self.config["silent"]:
-            call_speaker(text)
+            call_speaker(text, self.config)
 
         end = time.time()
         print(end - start, "sec.")
@@ -59,7 +59,8 @@ def main():
 
     sub = subparsers.add_parser("start", help="start aibo")
     sub.add_argument('-O', '--offline', action='store_true', help='run offline')
-    sub.add_argument('-S', '--silent', action='store_true', help='run without speaker')
+    sub.add_argument('-S', '--silent', action='store_true',
+                     help='run without speaker and save your time')
     sub.set_defaults(func=cli_start)
 
     args = parser.parse_args()
