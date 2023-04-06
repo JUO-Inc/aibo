@@ -21,11 +21,10 @@ def run_local_whisper(path, config):
     model = whisper.load_model(MODEL_SIZE)
     result = model.transcribe(path)
     print("Done.")
-    # print(result)
     if result["text"]:
         text = result["text"]
     else:
-        text = "No Result"
+        raise RuntimeError("Failed to transcribe your voice")
     print(text)
     output_path = get_output_path(path, text)
     with open(output_path, "w") as f:
@@ -57,7 +56,7 @@ def call_whisper(path, config):
     if result["text"]:
         text = result["text"]
     else:
-        text = "No Result"
+        raise RuntimeError("Failed to transcribe your voice")
     print(text)
     output_path = get_output_path(path, text)
     with open(output_path, "w") as f:
