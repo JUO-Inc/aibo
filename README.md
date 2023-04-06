@@ -40,7 +40,7 @@ First, configure the model you want to use, API, and API key. You can also set t
 aibo init
 ```
 
-Start aibo and start conversation in English. Your conversation history is stored in the history directory.
+Start aibo and start conversation in your language. Your conversation history is stored in the history directory.
 
 Offline execution is performed by appending "--offline" after this command.
 
