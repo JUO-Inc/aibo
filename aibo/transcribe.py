@@ -14,12 +14,12 @@ def run_whisper(path, config):
     return text, output_path
 
 
-def run_local_whisper(path, config, language="en"):
+def run_local_whisper(path, config):
     print("Transcribing...")
     MODEL = config["transcription_model"]
     MODEL, MODEL_SIZE = MODEL.split(":")
     model = whisper.load_model(MODEL_SIZE)
-    result = model.transcribe(path, language=language)
+    result = model.transcribe(path)
     print("Done.")
     # print(result)
     if result["text"]:
