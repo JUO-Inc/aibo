@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 if __name__ == "__main__":
     setup(
         name='aibo',
-        version='0.0.2',
+        version='0.0.3',
         description="aibo: AI partner that can run offline",
         long_description=open("README.md", "r", encoding="utf-8").read(),
         long_description_content_type="text/markdown",
