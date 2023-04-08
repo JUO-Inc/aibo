@@ -80,7 +80,7 @@ def get_output_path(path: str, text: str, remove_audio=True) -> str:
 
 
 def get_title(text: str) -> str:
-    title = text[:20]
+    title = text[:30]
     return title
 
 
