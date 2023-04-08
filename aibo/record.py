@@ -7,16 +7,20 @@ import audioop
 import pyaudio
 
 
-def record_audio():
-    now = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-    os.makedirs(os.path.join("history", now))
+def record_audio(output_path: str):
     CHUNK = 2**10
     FORMAT = pyaudio.paInt16
     CHANNELS = 1
     RATE = 44100
     MAX_RECORD_SECONDS = 60
     MIN_RECORD_SECONDS = 2  # Minimum recording time in seconds
-    output_path = os.path.join("history", now, "output.wav")
+    if output_path:
+        output_dir = os.path.dirname(output_path)
+        output_path = os.path.join(output_dir, "output.wav")
+    else:
+        now = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+        os.makedirs(os.path.join("history", now))
+        output_path = os.path.join("history", now, "output.wav")
     THRESHOLD = 35  # Audio threshold in dB
     silent_frames = 0
 

@@ -27,7 +27,7 @@ def run_local_whisper(path, config):
         raise RuntimeError("Failed to transcribe your voice")
     print(text)
     output_path = get_output_path(path, text)
-    with open(output_path, "w") as f:
+    with open(output_path, "a") as f:
         f.write(text)
     return text, output_path
 
@@ -59,7 +59,7 @@ def call_whisper(path, config):
         raise RuntimeError("Failed to transcribe your voice")
     print(text)
     output_path = get_output_path(path, text)
-    with open(output_path, "w") as f:
+    with open(output_path, "a") as f:
         f.write(text)
     return text, output_path
 
@@ -68,11 +68,14 @@ def get_output_path(path: str, text: str, remove_audio=True) -> str:
     if remove_audio:
         os.remove(path)
     oldpath = os.path.dirname(path)
-    title = get_title(text)
-    newpath = oldpath + "-" + title
-    os.makedirs(newpath)
-    os.rename(oldpath, newpath)
-    output_path = os.path.join(newpath, "output.md")
+    if os.path.exists(os.path.join(oldpath, "output.md")):
+        output_path = os.path.join(oldpath, "output.md")
+    else:
+        title = get_title(text)
+        newpath = oldpath + "-" + title
+        os.makedirs(newpath)
+        os.rename(oldpath, newpath)
+        output_path = os.path.join(newpath, "output.md")
     return output_path
 
 

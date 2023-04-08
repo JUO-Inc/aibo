@@ -21,19 +21,36 @@ class Aibo():
 
     def ask(self):
         start = time.time()
+        chat_history = []
+        output_path = None
         if not self.config["silent"]:
             call_speaker("How can I help you?", self.config)
-        output_path = record_audio()
+        while True:
+            output_path = record_audio(output_path)
 
-        text, output_path = run_whisper(output_path, self.config)
+            prompt, output_path = run_whisper(output_path, self.config)
 
-        text = run_chatgpt(text, output_path, self.config)
+            chat_history.append(prompt)
+            response = run_chatgpt(prompt, output_path, self.config, chat_history)
 
-        if not self.config["silent"]:
-            call_speaker(text, self.config)
+            if not self.config["silent"]:
+                call_speaker(response, self.config)
 
-        end = time.time()
-        print(end - start, "sec.")
+            end = time.time()
+            print(end - start, "sec.")
+            chat_history.append(response)
+            choice = input(
+                "Enter 1 to continue the conversation, 2 to start a new conversation or 3 to exit: ")
+            if choice == "1":
+                continue
+            elif choice == "2":
+                start = time.time()
+                chat_history = []
+                output_path = None
+                if not self.config["silent"]:
+                    call_speaker("How can I help you?", self.config)
+            elif choice == "3":
+                break
 
 
 def main():
