@@ -37,7 +37,8 @@ class Aibo():
                 call_speaker(response, self.config)
 
             end = time.time()
-            print(end - start, "sec.")
+            # print(end - start, "sec.")
+            print(f"The results are saved in {output_path}")
             chat_history.append(response)
             choice = input(
                 "Enter 1 to continue the conversation, 2 to start a new conversation or 3 to exit: ")
