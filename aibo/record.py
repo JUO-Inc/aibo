@@ -21,7 +21,7 @@ def record_audio(output_path: str):
         now = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
         os.makedirs(os.path.join("history", now))
         output_path = os.path.join("history", now, "output.wav")
-    THRESHOLD = 35  # Audio threshold in dB
+    THRESHOLD = 40  # Audio threshold in dB
     silent_frames = 0
 
     p = pyaudio.PyAudio()
